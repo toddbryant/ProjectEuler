@@ -4,8 +4,8 @@
 # 
 # Finds the first Fibonacci number whose first and last nine digits
 # are permutations of 123456789.
-# Uses modular arithmetic to compute the last nine digits exactly and
-# the golden ratio to compute just the first nine digits of each number.
+# Uses modular arithmetic to compute the last nine digits exactly 
+# and the golden ratio to compute just the first nine digits of each number.
 
 DIGITS = set(str('123456789'))
 def is9Pandigital(n):
