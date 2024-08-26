@@ -7,22 +7,22 @@
 # Uses modular arithmetic to compute the last nine digits exactly 
 # and the golden ratio to compute just the first nine digits of each number.
 
-DIGITS = set(str('123456789'))
-def is9Pandigital(n):
+DIGITS = set('123456789')
+def is_9_pandigital(n):
     return set(str(n)) == DIGITS
 
 GOLDEN_RATIO = (1+5**0.5)/2
 
-# Start at a 9-digit Fibonacci number
-back, back_old, k = 433494437, 267914296, 43
-front = back
+# 42nd and 41st Fibonacci numbers have 9 digits; start there
+last, prev_last, k = 165580141, 102334155, 41
+first = last
 
-digits = 16
 # Now compute just the first and last nine digits of each Fibonacci number
-while not (is9Pandigital(back) and is9Pandigital(int(front / 10**(digits-9)))):
-   front *= GOLDEN_RATIO
-   if front>10**digits:
-      front //= 10
-   back, back_old, k = (back + back_old) % 1_000_000_000, back, k + 1
+while not (is_9_pandigital(last) and is_9_pandigital(int(first))):
+   first *= GOLDEN_RATIO
+   if first > 999_999_999:
+      first /= 10
+   last, prev_last = (last + prev_last) % 1_000_000_000, last
+   k += 1
 
 print(k)
